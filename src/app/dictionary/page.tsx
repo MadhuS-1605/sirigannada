@@ -10,10 +10,12 @@ export default function DictionaryPage() {
   return (
     <div className="mx-auto max-w-2xl px-4 pt-8">
       <PageTitle k="navDictionary" />
-      <DownloadDictionaryButton />
       <Suspense fallback={null}>
         <DictionarySearch />
       </Suspense>
+      <div className="mt-8 border-t border-line pt-6">
+        <DownloadDictionaryButton />
+      </div>
     </div>
   );
 }

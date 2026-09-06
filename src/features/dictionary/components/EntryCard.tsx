@@ -34,10 +34,6 @@ function groupByPos(entry: DictEntry): Array<[PartOfSpeech, string[]]> {
   return [...groups.entries()];
 }
 
-function pageOrigin(): string {
-  return typeof window === "undefined" ? "" : window.location.origin;
-}
-
 export function EntryCard({
   entry,
   match,
@@ -70,15 +66,17 @@ export function EntryCard({
   };
 
   const copyCitation = () => {
-    const url = entryPermalinkUrl(entry.word, pageOrigin());
+    const url = entryPermalinkUrl(entry.word, CANONICAL_ORIGIN);
     copyText(`ವಿ. ಕೃಷ್ಣ, ಅಲರ್ ಕನ್ನಡ-ಇಂಗ್ಲಿಷ್ ನಿಘಂಟು, «${entry.word}». ${url}`, "citation");
   };
 
   const copyLink = () => {
-    copyText(entryPermalinkUrl(entry.word, pageOrigin()), "link");
+    copyText(entryPermalinkUrl(entry.word, CANONICAL_ORIGIN), "link");
   };
 
   const matchLabel = match ? t(MATCH_LABEL[match]) : null;
+  // Share card: carry the first several senses, not just defs[0], so the image reflects the entry.
+  const shareSupport = entry.defs.slice(0, 6).map((d) => d.text).join("  ·  ");
 
   return (
     <Card className={compact ? "p-4" : "p-5"}>
@@ -150,7 +148,8 @@ export function EntryCard({
             ? {
                 kind: "word",
                 main: entry.word,
-                support: entry.defs[0]?.text,
+                support: shareSupport || undefined,
+                supportMaxLines: 5,
                 url: entryPermalinkUrl(entry.word, CANONICAL_ORIGIN),
                 source: "Alar · V. Krishna",
                 size: "portrait",
