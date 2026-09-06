@@ -8,6 +8,7 @@ import { ShareIcon } from "@/components/icons";
 import { splitAksharas } from "@/lib/kannada";
 import type { WordGamePool } from "@/lib/types";
 import { ShareCardSheet } from "@/features/share/components/ShareCardSheet";
+import { ContinueButton } from "@/features/continue/components/ContinueButton";
 import { CANONICAL_ORIGIN } from "@/features/reader/lib/versePermalink";
 import { dailyPoolIndex, dateKey } from "../lib/wordGameDay";
 import { MAX_GUESSES, loadWordGameState, saveWordGameState, submitGuess, type WordGameState } from "../lib/wordGameSession";
@@ -142,6 +143,8 @@ export function WordGame() {
           onSubmit={submit}
         />
       )}
+
+      <ContinueButton />
     </div>
   );
 }

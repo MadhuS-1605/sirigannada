@@ -2,6 +2,7 @@ import type { Locale } from "./types";
 import { alphabetGlossStrings } from "./i18n.alphabetGlosses";
 import { collectionsStrings } from "./i18n.collections";
 import { contextLensStrings } from "./i18n.contextlens";
+import { continueStrings } from "./i18n.continue";
 import { gamesStrings } from "./i18n.games";
 import { offlineStrings } from "./i18n.offline";
 import { padabandhaStrings } from "./i18n.padabandha";
@@ -219,6 +220,7 @@ export const strings = {
   ...contextLensStrings,
   ...wordGameStrings,
   ...gamesStrings,
+  ...continueStrings,
 } as const satisfies Record<string, Record<Locale, string>>;
 
 export type StringKey = keyof typeof strings;

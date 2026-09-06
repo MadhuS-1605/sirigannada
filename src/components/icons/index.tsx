@@ -142,3 +142,11 @@ export const PuzzleIcon = (p: IconProps) => (
     <path d="M15 14h4v6h-6v-3.2a1.8 1.8 0 1 0-3.6 0V20H5v-6" />
   </Svg>
 );
+export const DevicesIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <rect x="2" y="4" width="12" height="9" rx="1.5" />
+    <path d="M6 17h5M8.5 13v4" />
+    <rect x="14.5" y="8.5" width="7.5" height="12.5" rx="1.5" />
+    <path d="M17.6 18.5h1.3" />
+  </Svg>
+);

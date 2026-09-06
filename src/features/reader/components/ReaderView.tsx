@@ -12,6 +12,7 @@ import { pagesInView, viewCount as countViews, viewOfPage } from "../lib/flipMat
 import { chapterOfBlock, chapterStarts, firstBlockOnPage, pageOfBlock } from "../lib/blockMap";
 import { CANONICAL_ORIGIN, blockCount, blockText, hashBlock, versePermalinkUrl } from "../lib/versePermalink";
 import { useVerseLink } from "../lib/useVerseLink";
+import { ContinueButton } from "@/features/continue/components/ContinueButton";
 import { BookFlow } from "./BookFlow";
 import { BookStage, type BookStageHandle } from "./BookStage";
 import { BookSearchSheet } from "./BookSearchSheet";
@@ -175,6 +176,13 @@ export function ReaderView({ book }: { book: Book }) {
         onChapters={() => setSheet("chapters")}
         onSettings={() => setSheet("settings")}
         saveItem={{ kind: "verse", bookSlug: book.slug, blockIndex: activeBlock }}
+        continueSlot={
+          <ContinueButton
+            icon
+            bookSlugs={[book.slug]}
+            current={{ bookId: book.slug, verseId: activeBlock, page: readProgress(book.slug)?.page }}
+          />
+        }
       />
       <ReaderBottomBar
         visible={chrome}
@@ -191,7 +199,13 @@ export function ReaderView({ book }: { book: Book }) {
         <p>{blockText(book, activeBlock)}</p>
       </section>
 
-      <SettingsSheet open={sheet === "settings"} onClose={() => setSheet(null)} settings={settings} onStepFont={stepFont} onUpdate={update} />
+      <SettingsSheet
+        open={sheet === "settings"}
+        onClose={() => setSheet(null)}
+        settings={settings}
+        onStepFont={stepFont}
+        onUpdate={update}
+      />
       <ChaptersSheet
         open={sheet === "chapters"}
         onClose={() => setSheet(null)}
