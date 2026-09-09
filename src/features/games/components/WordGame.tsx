@@ -10,9 +10,11 @@ import type { WordGamePool } from "@/lib/types";
 import { ShareCardSheet } from "@/features/share/components/ShareCardSheet";
 import { ContinueButton } from "@/features/continue/components/ContinueButton";
 import { CANONICAL_ORIGIN } from "@/features/reader/lib/versePermalink";
+import { keyStatuses } from "../lib/keyStatuses";
 import { dailyPoolIndex, dateKey } from "../lib/wordGameDay";
 import { MAX_GUESSES, loadWordGameState, saveWordGameState, submitGuess, type WordGameState } from "../lib/wordGameSession";
 import { WordGameGrid } from "./WordGameGrid";
+import { WordGameHeader } from "./WordGameHeader";
 import { WordGameInput } from "./WordGameInput";
 
 /**
@@ -82,13 +84,12 @@ export function WordGame() {
   if (!entry || !state) return <p className="text-base text-secondary">{t("wordGameLoadError")}</p>;
 
   const done = state.outcome !== "playing";
+  const guessNumber = Math.min(state.guesses.length + (done ? 0 : 1), MAX_GUESSES);
 
   return (
     <div className="flex flex-col gap-4">
+      <WordGameHeader dayNumber={dailyIndex + 1} date={today} guessNumber={guessNumber} />
       <p className="text-base text-secondary">{t("wordGameInstructions", { count: targetLength })}</p>
-      <p className="text-base text-muted">
-        {t("wordGameGuessCount", { n: Math.min(state.guesses.length + (done ? 0 : 1), MAX_GUESSES), total: MAX_GUESSES })}
-      </p>
 
       <WordGameGrid target={entry.word} guesses={state.guesses} draft={done ? "" : draft} />
 
@@ -99,7 +100,7 @@ export function WordGame() {
       )}
 
       {done ? (
-        <div className="flex flex-col gap-2 rounded-lg border border-line bg-elevated p-4">
+        <div className="flex flex-col gap-2 border border-line bg-elevated p-4">
           <p role="status" className="text-lg font-semibold text-ink">
             {state.outcome === "won" ? t("wordGameWon") : t("wordGameLost")}
           </p>
@@ -141,6 +142,7 @@ export function WordGame() {
             setError(null);
           }}
           onSubmit={submit}
+          statuses={keyStatuses(state.guesses, entry.word)}
         />
       )}
 
