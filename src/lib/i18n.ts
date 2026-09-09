@@ -1,8 +1,12 @@
 import type { Locale } from "./types";
 import { alphabetGlossStrings } from "./i18n.alphabetGlosses";
 import { collectionsStrings } from "./i18n.collections";
+import { contactStrings } from "./i18n.contact";
 import { contextLensStrings } from "./i18n.contextlens";
 import { gamesStrings } from "./i18n.games";
+import { homeStrings } from "./i18n.home";
+import { moreStrings } from "./i18n.more";
+import { searchStrings } from "./i18n.search";
 import { offlineStrings } from "./i18n.offline";
 import { padabandhaStrings } from "./i18n.padabandha";
 import { posStrings } from "./i18n.pos";
@@ -16,7 +20,12 @@ import { wordGameStrings } from "./i18n.wordgame";
 export const strings = {
   appName: { kn: "ಸಿರಿಗನ್ನಡ", en: "Sirigannada" },
   tagline: { kn: "ಕನ್ನಡಕ್ಕೆ ತೆರೆದ ಜ್ಞಾನನೆಲೆ", en: "An open home for Kannada knowledge" },
-  navHome: { kn: "ಮುಖಪುಟ", en: "Home" },
+  navHome: { kn: "ಮನೆ", en: "Home" },
+  navSearch: { kn: "ಹುಡುಕು", en: "Search" },
+  navMore: { kn: "ಇನ್ನಷ್ಟು", en: "More" },
+  navOfflineReady: { kn: "ಆಫ್‌ಲೈನ್ ಸಿದ್ಧ", en: "Offline ready" },
+  navOnlineOnly: { kn: "ಆನ್‌ಲೈನ್ ಮಾತ್ರ", en: "Online only" },
+  navGamesShort: { kn: "ಆಟ", en: "Games" },
   navDictionary: { kn: "ನಿಘಂಟು", en: "Dictionary" },
   navLibrary: { kn: "ಗ್ರಂಥಾಲಯ", en: "Library" },
   navAbout: { kn: "ಕುರಿತು", en: "About" },
@@ -223,6 +232,10 @@ export const strings = {
   ...contextLensStrings,
   ...wordGameStrings,
   ...gamesStrings,
+  ...homeStrings,
+  ...moreStrings,
+  ...searchStrings,
+  ...contactStrings,
 } as const satisfies Record<string, Record<Locale, string>>;
 
 export type StringKey = keyof typeof strings;

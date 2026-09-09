@@ -10,7 +10,7 @@
 
 ## ಹೇಗೆ ಬಳಸುವುದು · How to use
 
-Open [sirigannada.in](https://sirigannada.in) on a phone or computer. Kannada is the default; tap **English** in the header to switch.
+Open [sirigannada.in](https://sirigannada.in) on a phone or computer. Kannada is the default; tap **English** in the header on a computer, or under **ಇನ್ನಷ್ಟು · More** on a phone, to switch.
 
 [೨೦ ಸೆಕೆಂಡ್ ವೀಡಿಯೊ](https://sirigannada.in/demo.mp4) · home, dictionary, library, Nudi, alphabet.
 
@@ -26,7 +26,7 @@ Open [sirigannada.in](https://sirigannada.in) on a phone or computer. Kannada is
 
 ### ನಿಘಂಟು · Dictionary
 
-1. Tap **ನಿಘಂಟು**, or type in the search box on the home page.
+1. Tap **ಹುಡುಕು · Search**, or type in the search box on the home page.
 2. Search in Kannada (`ಮನೆ`), English (`house`), or Latin letters (`mane`).
 3. If nothing matches, tap a suggestion under **ಇದನ್ನೇ ಹುಡುಕುತ್ತಿದ್ದೀರಾ?**.
 4. Tap the star (**ಇಷ್ಟಪಟ್ಟಿಗೆ ಸೇರಿಸಿ**) to save a word. Recent searches stay on the empty screen.
@@ -55,7 +55,7 @@ The daily word pool and Padabandha route are included in offline installation. N
 
 ### ಸಲಕರಣೆಗಳು · Tools
 
-From **ಸಲಕರಣೆಗಳು**:
+From **ಇನ್ನಷ್ಟು · More → ಉಪಕರಣಗಳು**:
 
 | Tool | What it does |
 |---|---|
@@ -108,6 +108,22 @@ npm run dev         # http://localhost:3000
 ```
 
 Maintainers: `docs/handbook.md` (local) is the internal map.
+
+### Google Analytics
+
+Production builds load the GA4 web stream `G-PPV05Q4NXS`. Development mode does
+not load analytics. The measurement ID is public and baked into the static export.
+
+In the GA4 web stream, enable Enhanced Measurement → Page views → **Page changes
+based on browser history events** to measure client-side navigation. The app uses
+Google's automatic page views; do not add a second manual page-view tag. Verify an
+initial visit and navigation between routes in GA4 Realtime or Tag Assistant.
+
+Google receives standard analytics events and page URLs, including query parameters,
+and may set analytics cookies. Google Signals and advertising-personalization signals
+are disabled. No custom events send tool text, game answers, or saved learning
+progress. Changes to the analytics integration follow the accepted-issue and review
+process in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Data credits
 

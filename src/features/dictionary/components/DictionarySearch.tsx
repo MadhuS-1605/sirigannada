@@ -14,6 +14,7 @@ import { headwordFromParams } from "../lib/permalink";
 import { backspaceAtCursor, insertAtCursor } from "../lib/insertAtCursor";
 import { DidYouMean } from "./DidYouMean";
 import { DictionaryLetterIndex } from "./DictionaryLetterIndex";
+import { DownloadDictionaryButton } from "./DownloadDictionaryButton";
 import { SearchEmptyState } from "./SearchEmptyState";
 import { SearchResults } from "./SearchResults";
 import { KannadaKeyboard } from "./KannadaKeyboard";
@@ -116,7 +117,7 @@ export function DictionarySearch() {
       )}
 
       {!loading && q.trim() && results.length === 0 && suggestions.length > 0 && (
-        <div className="flex flex-col items-center gap-4 py-8">
+        <div className="flex flex-col gap-4 py-4">
           <DidYouMean words={suggestions} onPick={setQ} />
         </div>
       )}
@@ -138,6 +139,8 @@ export function DictionarySearch() {
           <p className="text-xs text-muted">{t("dictCredit")}</p>
         </>
       )}
+
+      <DownloadDictionaryButton />
     </div>
   );
 }
