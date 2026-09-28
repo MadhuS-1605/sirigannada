@@ -18,9 +18,9 @@ export function TopNav() {
 
   return (
     <header className="no-print hidden md:block sticky top-0 z-40 bg-surface border-b-2 border-line-strong">
-      <div className="mx-auto max-w-6xl px-5 md:px-10 py-2.5 flex flex-wrap items-center justify-between gap-x-6 gap-y-1 xl:h-16 xl:flex-nowrap xl:py-0">
-        <Link href="/" className="shrink-0">
-          <Wordmark size={32} />
+      <div className="mx-auto max-w-7xl px-5 md:px-10 py-3 flex flex-wrap items-center justify-between gap-6 xl:h-16 xl:flex-nowrap xl:py-0">
+        <Link href="/" className="shrink-0" style={{ lineHeight: 0 }}>
+          <Wordmark size={40} showLatin />
         </Link>
 
         <nav className="order-last w-full hidden md:flex items-center justify-center gap-1 xl:order-none xl:w-auto" aria-label={t("navPrimary")}>
@@ -42,7 +42,7 @@ export function TopNav() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <span className="hidden md:inline-flex items-center gap-2 text-sm text-ink mr-2" aria-live="polite">
+          <span className="hidden md:inline-flex items-center gap-2 text-sm text-ink mr-2 whitespace-nowrap" aria-live="polite">
             <span aria-hidden="true" className={`size-2 ${offlineReady ? "bg-ink" : "bg-paper-edge"}`} />
             {offlineReady ? t("navOfflineReady") : t("navOnlineOnly")}
           </span>
