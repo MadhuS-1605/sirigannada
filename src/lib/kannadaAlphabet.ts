@@ -1,24 +1,12 @@
 import type { StringKey } from "./i18n";
 
 /**
- * Kannada varnamale (alphabet) data: vowels, consonants, gunitakshara (kagunita) forms, and
- * ottakshara (conjunct) teaching examples. Lives under src/lib/ (not a feature's lib/) because
+ * Kannada varnamale (alphabet) data: vowels, consonants, and gunitakshara (kagunita) signs.
+ * Lives under src/lib/ (not a feature's lib/) because
  * the learn/alphabet page, the dictionary's on-screen keyboard, and the learn/practice quiz
  * feature all need it — see src/lib/speak.ts for the precedent of promoting a learn/-only helper
  * once a second feature needed it.
  */
-
-/** One row in the ottakshara (conjunct) teaching list. */
-export interface OttaksharaExample {
-  conjunct: string;
-  word: string;
-  glossKey: StringKey;
-}
-
-export interface OttaksharaGroup {
-  titleKey: StringKey;
-  examples: readonly OttaksharaExample[];
-}
 
 export interface LetterGroup {
   titleKey: StringKey;
@@ -59,6 +47,11 @@ export const CONSONANT_GROUPS: readonly LetterGroup[] = [
   { titleKey: "alphabetArchaic", letters: ARCHAIC },
 ];
 
+/** Every letter in the order the alphabet page shows them (the letter popup steps through this). */
+export const ALPHABET_ORDER: readonly string[] = [
+  ...VOWELS, ...YOGAVAHA, ...SANSKRIT_VOWELS, ...CONSONANT_GROUPS.flatMap((group) => group.letters),
+];
+
 /**
  * Kagunita attachments for one consonant: 13 vowels (inherent a first),
  * then anusvara, visarga, and virama (halant).
@@ -70,41 +63,3 @@ export const GUNITA_SIGNS = [
 export function gunitaksharaForm(consonant: string, sign: string): string {
   return `${consonant}${sign}`;
 }
-
-export function gunitaksharaRow(consonant: string): string[] {
-  return GUNITA_SIGNS.map((sign) => gunitaksharaForm(consonant, sign));
-}
-
-export const OTTAKSHARA_GROUPS: readonly OttaksharaGroup[] = [
-  {
-    titleKey: "alphabetGeminate",
-    examples: [
-      { conjunct: "ಕ್ಕ", word: "ಅಕ್ಕ", glossKey: "alphabetGlossAkka" },
-      { conjunct: "ನ್ನ", word: "ಅನ್ನ", glossKey: "alphabetGlossAnna" },
-      { conjunct: "ಪ್ಪ", word: "ಅಪ್ಪ", glossKey: "alphabetGlossAppa" },
-      { conjunct: "ಮ್ಮ", word: "ಅಮ್ಮ", glossKey: "alphabetGlossAmma" },
-      { conjunct: "ಟ್ಟ", word: "ಬಟ್ಟೆ", glossKey: "alphabetGlossBatte" },
-      { conjunct: "ಲ್ಲ", word: "ಎಲ್ಲ", glossKey: "alphabetGlossElla" },
-      { conjunct: "ಣ್ಣ", word: "ಕಣ್ಣು", glossKey: "alphabetGlossKannu" },
-    ],
-  },
-  {
-    titleKey: "alphabetRaConjunct",
-    examples: [
-      { conjunct: "ಕ್ರ", word: "ಚಕ್ರ", glossKey: "alphabetGlossCakra" },
-      { conjunct: "ತ್ರ", word: "ಮಿತ್ರ", glossKey: "alphabetGlossMitra" },
-      { conjunct: "ಪ್ರ", word: "ಪ್ರೀತಿ", glossKey: "alphabetGlossPriti" },
-      { conjunct: "ಶ್ರ", word: "ಶ್ರಮ", glossKey: "alphabetGlossSrama" },
-    ],
-  },
-  {
-    titleKey: "alphabetMixedConjunct",
-    examples: [
-      { conjunct: "ಕ್ಷ", word: "ಪಕ್ಷಿ", glossKey: "alphabetGlossPaksi" },
-      { conjunct: "ಜ್ಞ", word: "ಜ್ಞಾನ", glossKey: "alphabetGlossJnana" },
-      { conjunct: "ಷ್ಟ", word: "ಕಷ್ಟ", glossKey: "alphabetGlossKasta" },
-      { conjunct: "ದ್ಧ", word: "ಬುದ್ಧಿ", glossKey: "alphabetGlossBuddhi" },
-      { conjunct: "ತ್ಯ", word: "ಸತ್ಯ", glossKey: "alphabetGlossSatya" },
-    ],
-  },
-];

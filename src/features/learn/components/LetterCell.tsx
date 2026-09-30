@@ -1,16 +1,19 @@
 "use client";
 
+import { useContext } from "react";
 import { useT } from "@/components/providers/AppProviders";
 import { toIso15919 } from "@/lib/iso15919";
-import { useSpeakKannada } from "@/lib/SpeakContext";
+import { letterMedia } from "../lib/letterMedia";
+import { OpenLetterContext } from "../lib/openLetter";
 
 /**
- * One akshara on a square surface tile with its ISO 15919 line. Speaks when a Kannada TTS
- * voice exists; pressing turns the tile coral.
+ * One akshara on a square surface tile with its ISO 15919 line. Pressing opens the letter popup
+ * (which plays its sound) and turns the tile coral; letters without open media are plain tiles.
  */
 export function LetterCell({ glyph }: { glyph: string }) {
   const t = useT();
-  const speak = useSpeakKannada();
+  const open = useContext(OpenLetterContext);
+  const className = "flex aspect-square min-h-11 w-full flex-col items-center justify-center gap-0.5 rounded-md border border-line bg-elevated text-ink px-1 py-1";
   const inner = (
     <>
       <span className="font-serif text-xl font-semibold leading-tight" lang="kn">
@@ -22,16 +25,15 @@ export function LetterCell({ glyph }: { glyph: string }) {
     </>
   );
 
-  const className = "flex aspect-square min-h-11 w-full flex-col items-center justify-center gap-0.5 rounded-md border border-line bg-elevated text-ink px-1 py-1";
-
-  if (!speak) return <div className={className}>{inner}</div>;
+  if (!letterMedia(glyph)) return <div className={className}>{inner}</div>;
 
   return (
     <button
       type="button"
       className={`${className} transition-colors duration-150 hover:bg-paper-edge active:bg-accent-strong active:text-on-accent`}
-      aria-label={t("speakLetter", { letter: glyph })}
-      onClick={() => speak(glyph)}
+      aria-label={t("letterSheetOpen", { letter: glyph })}
+      aria-haspopup="dialog"
+      onClick={() => open(glyph)}
     >
       {inner}
     </button>

@@ -3,12 +3,11 @@ import {
   ARCHAIC,
   AVARGIYA,
   GUNITA_SIGNS,
-  OTTAKSHARA_GROUPS,
   SCHOOL_CONSONANTS,
   SANSKRIT_VOWELS,
   VOWELS,
   YOGAVAHA,
-  gunitaksharaRow,
+  gunitaksharaForm,
 } from "./kannadaAlphabet";
 
 const VOWEL_ISO: Record<string, string> = {
@@ -69,7 +68,7 @@ describe("ISO 15919 on the charts", () => {
 
 describe("gunitakshara", () => {
   it("builds 16 forms for ಕ matching school order", () => {
-    const row = gunitaksharaRow("ಕ");
+    const row = GUNITA_SIGNS.map((sign) => gunitaksharaForm("ಕ", sign));
     expect(row).toHaveLength(16);
     expect(GUNITA_SIGNS).toHaveLength(16);
     expect(row[0]).toBe("ಕ");
@@ -81,28 +80,7 @@ describe("gunitakshara", () => {
   });
 
   it("applies the same signs to another consonant", () => {
-    expect(gunitaksharaRow("ತ")[2]).toBe("ತಿ");
+    expect(gunitaksharaForm("ತ", GUNITA_SIGNS[2]!)).toBe("ತಿ");
     expect(toIso15919("ತಿ")).toBe("ti");
-  });
-});
-
-describe("ottakshara examples", () => {
-  const VIRAMA = "್";
-
-  it("every conjunct contains virama and the word uses that conjunct", () => {
-    for (const group of OTTAKSHARA_GROUPS) {
-      for (const ex of group.examples) {
-        expect(ex.conjunct).toContain(VIRAMA);
-        expect(ex.word).toContain(ex.conjunct);
-      }
-    }
-  });
-
-  it("romanises the teaching words", () => {
-    expect(toIso15919("ಅಕ್ಕ")).toBe("akka");
-    expect(toIso15919("ಕಣ್ಣು")).toBe("kaṇṇu");
-    expect(toIso15919("ಪಕ್ಷಿ")).toBe("pakṣi");
-    expect(toIso15919("ಜ್ಞಾನ")).toBe("jñāna");
-    expect(toIso15919("ಪ್ರೀತಿ")).toBe("prīti");
   });
 });

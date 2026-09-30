@@ -3,6 +3,7 @@ import { PageTitle } from "@/components/ui/PageTitle";
 import { AlarCredit } from "@/features/credits/components/AlarCredit";
 import { CoverCredits } from "@/features/credits/components/CoverCredits";
 import { CreditsList } from "@/features/credits/components/CreditsList";
+import { LetterMediaCredit } from "@/features/credits/components/LetterMediaCredit";
 import { SoftwareCredit } from "@/features/credits/components/SoftwareCredit";
 import { readBooksManifest } from "@/features/library/lib/readManifest";
 
@@ -15,6 +16,7 @@ export default function CreditsPage() {
       <PageTitle k="navCredits" sub="creditsSub" />
       <div className="flex flex-col gap-8">
         <AlarCredit />
+        <LetterMediaCredit />
         <SoftwareCredit />
         <CreditsList books={books} />
         <CoverCredits books={books} />

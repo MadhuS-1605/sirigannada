@@ -104,6 +104,11 @@
   }
 }
 
+/* Alphabet popup: handwriting GIFs are drawn on white, so they sit on a white card in both themes. */
+@utility letter-card {
+  background: #fff;
+}
+
 @utility safe-bottom {
   padding-bottom: max(env(safe-area-inset-bottom), 0.5rem);
 }

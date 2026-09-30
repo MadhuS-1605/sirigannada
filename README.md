@@ -83,7 +83,7 @@ From **ಇನ್ನಷ್ಟು · More → ಉಪಕರಣಗಳು**:
 | [ಲಿಪ್ಯಂತರ](https://sirigannada.in/tools/transliterate) | Kannada ↔ ISO 15919 Latin. Needs the dots: `kannaḍa` → ಕನ್ನಡ, not plain `kannada`. |
 | [ಅಂಕೆಗಳು](https://sirigannada.in/tools/numbers) | Arabic ↔ Kannada digits, and numbers in words. |
 | [ನುಡಿ / ಬರಹ](https://sirigannada.in/tools/convert) | Paste Nudi/Baraha ASCII (`PÀ£ÀßqÀ`) to get Unicode ಕನ್ನಡ. Wrap English in `$...$`. |
-| [ವರ್ಣಮಾಲೆ](https://sirigannada.in/learn/alphabet) | Vowels, consonants, ಕಾಗುಣಿತ, ಒತ್ತಕ್ಷರ. Tap a letter to hear it if the phone has a Kannada voice. |
+| [ವರ್ಣಮಾಲೆ](https://sirigannada.in/learn/alphabet) | Vowels and consonants. Tap a letter to watch it handwritten, hear it spoken, and see everyday words that begin with it; the arrows step through the alphabet. Animations and recordings from Wikimedia Commons (CC BY-SA 4.0). |
 | [ಗಾದೆಗಳು](https://sirigannada.in/proverbs) | Search 2,000+ folk sayings (CC BY-SA, Kannada Wikiquote). |
 
 ### ಚಿತ್ರ ಹಂಚಿ · Share as an image card
