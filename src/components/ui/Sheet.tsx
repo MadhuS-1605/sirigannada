@@ -10,6 +10,8 @@ interface SheetProps {
   onClose: () => void;
   title?: string;
   children: ReactNode;
+  /** Wider dialog (max-w-2xl) for content that needs room, e.g. the letter popup. */
+  wide?: boolean;
 }
 
 const focusableSelector = [
@@ -34,7 +36,7 @@ function focusableElements(container: HTMLElement) {
  * Bottom sheet on mobile, centered dialog on md+. Closes on backdrop click and Escape.
  * Uses a single translate transition; respects reduced motion via globals.css.
  */
-export function Sheet({ open, onClose, title, children }: SheetProps) {
+export function Sheet({ open, onClose, title, children, wide }: SheetProps) {
   const t = useT();
   const dialogRef = useRef<HTMLDivElement>(null);
   const onCloseRef = useRef(onClose);
@@ -115,7 +117,7 @@ export function Sheet({ open, onClose, title, children }: SheetProps) {
         aria-modal="true"
         aria-labelledby={title ? titleId : undefined}
         tabIndex={-1}
-        className={`relative w-full max-w-lg max-h-[85dvh] overflow-y-auto bg-elevated rounded-lg border border-line shadow-sheet transition-transform duration-200 ease-out ${
+        className={`relative w-full ${wide ? "max-w-2xl" : "max-w-lg"} max-h-[85dvh] overflow-y-auto bg-elevated rounded-lg border border-line shadow-sheet transition-transform duration-200 ease-out ${
           entered ? "translate-y-0" : "translate-y-4"
         }`}
       >

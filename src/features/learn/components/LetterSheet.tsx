@@ -54,15 +54,15 @@ export function LetterSheet({ glyph, onClose, onStep }: { glyph: string | null; 
   if (sharingImage) return <ShareCardSheet open onClose={() => setSharingImage(false)} input={imageInput} render={renderImage} />;
 
   return (
-    <Sheet open onClose={onClose} title={t("letterSheetTitle", { letter: glyph })}>
+    <Sheet open wide onClose={onClose} title={t("letterSheetTitle", { letter: glyph })}>
       <div className="-mx-5 flex items-center">
         <IconButton onClick={() => onStep(-1)} aria-label={t("letterSheetPrevious")} className="w-7 shrink-0">
           <ChevronLeftIcon size={22} />
         </IconButton>
         <div className="grid min-w-0 flex-1 grid-cols-2 gap-2">
-          <div className="flex flex-col items-center gap-3">
+          <div className="flex flex-col items-center justify-center gap-3">
             {/* eslint-disable-next-line @next/next/no-img-element -- same-origin static asset, no optimiser in static export */}
-            <img src={media.gif} alt="" className="letter-card aspect-square w-full max-w-44 rounded-md border border-line object-contain p-2" />
+            <img src={media.gif} alt="" className="letter-card aspect-square w-full max-w-60 rounded-md border border-line object-contain p-2" />
             <span className="text-sm text-muted" lang="en">{toIso15919(glyph)}</span>
             <div className="flex flex-wrap justify-center gap-2">
               <Button variant="secondary" size="sm" onClick={() => hearLetter(glyph, speak)} data-sheet-initial-focus>
@@ -78,10 +78,10 @@ export function LetterSheet({ glyph, onClose, onStep }: { glyph: string | null; 
             ) : (
               <ul className="flex flex-col gap-2">
                 {words.map(({ word, en, picture }) => (
-                  <li key={word} className="flex items-center gap-2">
+                  <li key={word} className="flex items-center gap-3">
                     {picture && (
                       // eslint-disable-next-line @next/next/no-img-element -- same-origin static asset, no optimiser in static export
-                      <img src={wordPictureSrc(picture)} alt="" loading="lazy" className="size-12 shrink-0 rounded-md border border-line object-cover" />
+                      <img src={wordPictureSrc(picture)} alt="" loading="lazy" className="letter-card size-20 sm:size-24 shrink-0 rounded-md border border-line object-contain" />
                     )}
                     <span className="flex flex-col">
                       <span className="font-serif text-lg font-semibold text-ink" lang="kn">{word}</span>

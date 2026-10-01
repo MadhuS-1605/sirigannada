@@ -50,7 +50,7 @@ export function PracticeLetterQuiz({ kind }: { kind: "hear" | "first" }) {
           <p className="text-2xl font-serif font-semibold text-ink">{t("practiceFirstLetterPrompt")}</p>
           <figure className="flex flex-col items-center gap-1 self-center">
             {/* eslint-disable-next-line @next/next/no-img-element -- same-origin static asset, no optimiser in static export */}
-            <img src={wordPictureSrc(question.word!.picture!)} alt={question.word!.en} className="size-40 rounded-md border border-line object-cover" />
+            <img src={wordPictureSrc(question.word!.picture!)} alt={question.word!.en} className="letter-card size-40 rounded-md border border-line object-contain" />
             <figcaption className="text-sm text-secondary" lang="en">
               {session.answered ? (
                 <>
