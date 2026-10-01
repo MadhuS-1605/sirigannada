@@ -6,11 +6,14 @@ import { ChevronLeftIcon } from "@/components/icons";
 import type { StringKey } from "@/lib/i18n";
 import { PracticeFlashcards } from "./PracticeFlashcards";
 import { PracticeGunita } from "./PracticeGunita";
+import { PracticeLetterQuiz } from "./PracticeLetterQuiz";
 import { PracticeMatch } from "./PracticeMatch";
 
-type Mode = "match" | "gunita" | "flashcards";
+type Mode = "hear" | "first" | "match" | "gunita" | "flashcards";
 
 const MODES: { mode: Mode; titleKey: StringKey; subKey: StringKey }[] = [
+  { mode: "hear", titleKey: "practiceModeHearLetter", subKey: "practiceModeHearLetterSub" },
+  { mode: "first", titleKey: "practiceModeFirstLetter", subKey: "practiceModeFirstLetterSub" },
   { mode: "match", titleKey: "practiceModeMatch", subKey: "practiceModeMatchSub" },
   { mode: "gunita", titleKey: "practiceModeGunita", subKey: "practiceModeGunitaSub" },
   { mode: "flashcards", titleKey: "practiceModeFlashcards", subKey: "practiceModeFlashcardsSub" },
@@ -55,6 +58,7 @@ export function PracticeHub() {
         <ChevronLeftIcon size={18} />
         {t("practiceBack")}
       </button>
+      {(mode === "hear" || mode === "first") && <PracticeLetterQuiz key={mode} kind={mode} />}
       {mode === "match" && <PracticeMatch />}
       {mode === "gunita" && <PracticeGunita />}
       {mode === "flashcards" && <PracticeFlashcards />}

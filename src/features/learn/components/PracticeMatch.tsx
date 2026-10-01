@@ -58,6 +58,7 @@ export function PracticeMatch() {
         score={session.score}
         total={deck.length}
         choiceLang="en"
+        titleKey="practiceModeMatch"
         onAnswer={(i) => setSession((s) => answerQuestion(s, question.correctIndex, i))}
         onNext={() => setSession((s) => advance(s, deck.length))}
         onRestart={() => {
