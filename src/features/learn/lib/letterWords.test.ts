@@ -1,6 +1,8 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { describe, expect, it } from "vitest";
 import { SCHOOL_CONSONANTS, VOWELS } from "@/lib/kannadaAlphabet";
-import { LETTER_WORDS } from "./letterWords";
+import { LETTER_WORDS, wordPictureSrc } from "./letterWords";
 
 const VIRAMA = "್";
 
@@ -18,6 +20,12 @@ describe("letter words", () => {
         expect(word[letter.length], word).not.toBe(VIRAMA);
         expect(en.trim()).not.toBe("");
       }
+    }
+  });
+
+  it("every picture file exists", () => {
+    for (const { word, picture } of Object.values(LETTER_WORDS).flat()) {
+      if (picture) expect(existsSync(join(process.cwd(), "public", wordPictureSrc(picture))), word).toBe(true);
     }
   });
 });

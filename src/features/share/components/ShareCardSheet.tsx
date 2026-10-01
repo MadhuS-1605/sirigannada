@@ -19,10 +19,12 @@ interface ShareCardSheetProps {
   onClose: () => void;
   /** Everything the card needs. `null` renders nothing (sheet closed). */
   input: ShareCardInput | null;
+  /** Paints a custom card in place of the text card (`input` still supplies caption, link, filename). Keep it stable. */
+  render?: (canvas: HTMLCanvasElement) => Promise<void>;
 }
 
 /** Web Share API Level 2 (file sharing), not just the base `navigator.share`. */
-function canShareFiles(file: File): boolean {
+export function canShareFiles(file: File): boolean {
   if (typeof navigator === "undefined" || !navigator.share || !navigator.canShare) return false;
   try {
     return navigator.canShare({ files: [file] });
@@ -38,7 +40,7 @@ type Copied = "image" | "caption" | "link" | null;
  * the device, then offers download, native share, copy-image, copy-caption, and copy-link. Shares
  * exactly one unit. Refuses when the renderer rejects the text (empty or fails text-health).
  */
-export function ShareCardSheet({ open, onClose, input }: ShareCardSheetProps) {
+export function ShareCardSheet({ open, onClose, input, render }: ShareCardSheetProps) {
   const t = useT();
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [pngUrl, setPngUrl] = useState<string | null>(null);
@@ -58,7 +60,7 @@ export function ShareCardSheet({ open, onClose, input }: ShareCardSheetProps) {
       const canvas = canvasRef.current;
       if (!canvas) return;
       try {
-        await renderShareCard(canvas, input);
+        await (render ? render(canvas) : renderShareCard(canvas, input));
       } catch (err) {
         if (!cancelled) setRefused(err instanceof ShareCardError);
         return;
@@ -72,7 +74,7 @@ export function ShareCardSheet({ open, onClose, input }: ShareCardSheetProps) {
     return () => {
       cancelled = true;
     };
-  }, [open, input]);
+  }, [open, input, render]);
 
   useEffect(
     () => () => {
@@ -113,7 +115,9 @@ export function ShareCardSheet({ open, onClose, input }: ShareCardSheetProps) {
     const file = new File([pngBlob], filename, { type: "image/png" });
     if (!canShareFiles(file)) return;
     try {
-      await navigator.share({ files: [file], text: buildCaption(input) });
+      // File only: with `text` too, share targets show two items (the image plus a caption/link preview).
+      // The caption stays one tap away under "Copy caption".
+      await navigator.share({ files: [file] });
     } catch {
       /* user cancelled or the browser refused */
     }

@@ -83,12 +83,12 @@ From **ಇನ್ನಷ್ಟು · More → ಉಪಕರಣಗಳು**:
 | [ಲಿಪ್ಯಂತರ](https://sirigannada.in/tools/transliterate) | Kannada ↔ ISO 15919 Latin. Needs the dots: `kannaḍa` → ಕನ್ನಡ, not plain `kannada`. |
 | [ಅಂಕೆಗಳು](https://sirigannada.in/tools/numbers) | Arabic ↔ Kannada digits, and numbers in words. |
 | [ನುಡಿ / ಬರಹ](https://sirigannada.in/tools/convert) | Paste Nudi/Baraha ASCII (`PÀ£ÀßqÀ`) to get Unicode ಕನ್ನಡ. Wrap English in `$...$`. |
-| [ವರ್ಣಮಾಲೆ](https://sirigannada.in/learn/alphabet) | Vowels and consonants. Tap a letter to watch it handwritten, hear it spoken, and see everyday words that begin with it; the arrows step through the alphabet. Animations and recordings from Wikimedia Commons (CC BY-SA 4.0). |
+| [ವರ್ಣಮಾಲೆ](https://sirigannada.in/learn/alphabet) | Vowels and consonants. Tap a letter to watch it handwritten, hear it spoken, and see everyday words that begin with it, each with a picture; the arrows step through the alphabet. **ಹಂಚಿ** shares the letter as an image or as a short video (the handwriting at its own pace, the sound, the words and pictures), made on the device. Animations and recordings from Wikimedia Commons (CC BY-SA 4.0), credited on the card. |
 | [ಗಾದೆಗಳು](https://sirigannada.in/proverbs) | Search 2,000+ folk sayings (CC BY-SA, Kannada Wikiquote). |
 
 ### ಚಿತ್ರ ಹಂಚಿ · Share as an image card
 
-A dictionary word, a proverb (**ಗಾದೆ**), the daily word, and a library verse each have a **ಚಿತ್ರ ಹಂಚಿ** action that renders a branded 1080×1350 (or 1080×1080) PNG on the device — no upload, no third-party call. The sheet offers download, the native share sheet, copy-image, copy-caption, and copy-link. Text that fails the Nudi/Baraha health check is refused.
+A dictionary word, a proverb (**ಗಾದೆ**), the daily word, a library verse, and an alphabet letter each have a **ಚಿತ್ರ ಹಂಚಿ** action that renders a branded 1080×1350 (or 1080×1080) PNG on the device — no upload, no third-party call. The sheet offers download, the native share sheet, copy-image, copy-caption, and copy-link. Text that fails the Nudi/Baraha health check is refused.
 
 ### ಆ್ಯಪ್ ಮತ್ತು ಆಫ್‌ಲೈನ್ · Install and offline
 

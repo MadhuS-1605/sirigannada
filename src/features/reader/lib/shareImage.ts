@@ -65,5 +65,6 @@ export function downloadPng(filename: string, blob: Blob): void {
   document.body.appendChild(a);
   a.click();
   a.remove();
-  URL.revokeObjectURL(url);
+  // Revoking in the same tick can hand the download an empty body (seen with multi-MB videos).
+  setTimeout(() => URL.revokeObjectURL(url), 10_000);
 }
