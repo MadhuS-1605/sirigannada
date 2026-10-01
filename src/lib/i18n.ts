@@ -1,6 +1,5 @@
 import { childrenStrings } from "./i18n.children";
 import type { Locale } from "./types";
-import { alphabetGlossStrings } from "./i18n.alphabetGlosses";
 import { collectionsStrings } from "./i18n.collections";
 import { contactStrings } from "./i18n.contact";
 import { contextLensStrings } from "./i18n.contextlens";
@@ -13,6 +12,7 @@ import { offlineStrings } from "./i18n.offline";
 import { padabandhaStrings } from "./i18n.padabandha";
 import { posStrings } from "./i18n.pos";
 import { practiceStrings } from "./i18n.practice";
+import { letterSheetStrings } from "./i18n.letterSheet";
 import { shareStrings } from "./i18n.share";
 import { storiesStrings } from "./i18n.stories";
 import { picturebooksStrings } from "./i18n.picturebooks";
@@ -194,7 +194,7 @@ export const strings = {
   numbersOutOfRange: { kn: "೦ ರಿಂದ ೧೦೦ ಕೋಟಿಯವರೆಗಿನ ಪೂರ್ಣಾಂಕವನ್ನು ನಮೂದಿಸಿ.", en: "Enter a whole number from 0 to 100 crore (10⁹)." },
   openNumbers: { kn: "ಅಂಕೆ ಸಲಕರಣೆ", en: "Numbers tool" },
   alphabetTitle: { kn: "ವರ್ಣಮಾಲೆ", en: "Alphabet" },
-  alphabetSub: { kn: "ಕನ್ನಡದ ಸ್ವರ, ವ್ಯಂಜನ, ಕಾಗುಣಿತ ಮತ್ತು ಒತ್ತಕ್ಷರ. ಪ್ರತಿ ಅಕ್ಷರಕ್ಕೆ ISO 15919 ಲಿಪ್ಯಂತರ.", en: "Kannada vowels, consonants, gunitakshara, and conjuncts, each with ISO 15919." },
+  alphabetSub: { kn: "ಕನ್ನಡದ ಸ್ವರ ಮತ್ತು ವ್ಯಂಜನ. ಪ್ರತಿ ಅಕ್ಷರಕ್ಕೆ ISO 15919 ಲಿಪ್ಯಂತರ.", en: "Kannada vowels and consonants, each with ISO 15919." },
   alphabetVowels: { kn: "ಸ್ವರಗಳು", en: "Vowels" },
   alphabetYogavaha: { kn: "ಯೋಗವಾಹಗಳು", en: "Yogavaha" },
   alphabetSanskritVowels: { kn: "ಸಂಸ್ಕೃತ ಸ್ವರಗಳು", en: "Sanskrit-only vowels" },
@@ -206,18 +206,9 @@ export const strings = {
   alphabetVargaPa: { kn: "ಪ-ವರ್ಗ", en: "pa-varga" },
   alphabetAvargiya: { kn: "ಅವರ್ಗೀಯ", en: "Other consonants" },
   alphabetArchaic: { kn: "ಪ್ರಾಚೀನ ಅಕ್ಷರಗಳು", en: "Archaic letters" },
-  alphabetGunita: { kn: "ಕಾಗುಣಿತ", en: "Gunitakshara" },
-  alphabetGunitaHint: { kn: "ಒಂದು ವ್ಯಂಜನವನ್ನು ಆರಿಸಿ. ಸ್ವರ ಚಿಹ್ನೆಗಳು ಅದಕ್ಕೆ ಹೇಗೆ ಸೇರುತ್ತವೆ ಎಂದು ನೋಡಿ.", en: "Pick a consonant to see it with every vowel sign." },
-  alphabetPickConsonant: { kn: "ವ್ಯಂಜನ ಆಯ್ಕೆ", en: "Choose a consonant" },
-  alphabetOttakshara: { kn: "ಒತ್ತಕ್ಷರ", en: "Ottakshara" },
-  alphabetOttaksharaSub: { kn: "ಎರಡು ವ್ಯಂಜನಗಳು ಒಂದೇ ಅಕ್ಷರದಲ್ಲಿ ಸೇರಿದಾಗ ಮೊದಲನೆಯದು ಒತ್ತಾಗಿ ನಿಲ್ಲುತ್ತದೆ.", en: "When two consonants share one akshara, the first is written as a conjunct." },
-  alphabetGeminate: { kn: "ದ್ವಿತ್ವ: ಒಂದೇ ವ್ಯಂಜನ ಎರಡು ಬಾರಿ", en: "Geminate: same consonant twice" },
-  alphabetRaConjunct: { kn: "ರಕಾರದ ಒತ್ತು", en: "Conjuncts with ra" },
-  alphabetMixedConjunct: { kn: "ಇತರೆ ಒತ್ತುಗಳು", en: "Other conjuncts" },
   alphabetLicense: { kn: "ಈ ಪಾಠ ಮೂಲ ರಚನೆ. ಪರವಾನಗಿ", en: "This lesson is original teaching material. Licence" },
   learnTitle: { kn: "ಕಲಿ", en: "Learn" },
-  learnSub: { kn: "ಕನ್ನಡದ ಅಕ್ಷರಗಳು, ಕಾಗುಣಿತ, ಒತ್ತಕ್ಷರ.", en: "Kannada letters, gunitakshara, and conjuncts." },
-  ...alphabetGlossStrings,
+  learnSub: { kn: "ಕನ್ನಡದ ಅಕ್ಷರಗಳು.", en: "Kannada letters." },
   proverbsTitle: { kn: "ಗಾದೆಗಳು", en: "Proverbs" },
   proverbsSub: { kn: "ಜನಪದ ಗಾದೆಗಳು. ಹುಡುಕಿ, ಓದಿ.", en: "Folk sayings. Search and read." },
   proverbSearchPlaceholder: { kn: "ಗಾದೆ ಹುಡುಕಿ…", en: "Search a proverb…" },
@@ -236,8 +227,7 @@ export const strings = {
   ...textHealthStrings,
   copyOutput: { kn: "ಪಠ್ಯ ನಕಲಿಸಿ", en: "Copy text" },
   convertOutput: { kn: "ಪರಿವರ್ತಿತ ಪಠ್ಯ", en: "Converted text" },
-  speakLetter: { kn: "{letter} ಉಚ್ಚರಿಸಿ", en: "Say {letter}" },
-  alphabetSpeakHint: { kn: "ಅಕ್ಷರ ಒತ್ತಿ ಕೇಳಿ.", en: "Tap a letter to hear it." },
+  alphabetSpeakHint: { kn: "ಅಕ್ಷರ ಒತ್ತಿ ಕೇಳಿ, ಬರೆಯುವ ಬಗೆ ನೋಡಿ.", en: "Tap a letter to hear it and see how it is written." },
   aboutP1: { kn: "ಕನ್ನಡದ ನಿಘಂಟು, ಸಾಹಿತ್ಯ, ಗಾದೆಗಳು, ಕಲಿಕೆ ಮತ್ತು ಭಾಷಾ ಸಲಕರಣೆಗಳು. ಉಚಿತ. ಪ್ರತಿ ಪಠ್ಯಕ್ಕೆ ಮೂಲ ಮತ್ತು ಪರವಾನಗಿ ಇದೆ.", en: "A Kannada dictionary, literature, proverbs, learning, and language tools. Free. Every text has a source and a licence." },
   aboutP2: { kn: "ತಂತ್ರಾಂಶ AGPL-3.0. ಯಾರೂ ಇದನ್ನು ಮುಚ್ಚಿಡಲಾರರು. ಜಾಲತಾಣ ನಿಂತರೂ ಮೂಲದಿಂದ ಮತ್ತೆ ನಿಲ್ಲಿಸಬಹುದು.", en: "The code is AGPL-3.0. Nobody can close it. If this site stops, anyone can run it from the source." },
   aboutWikisource: { kn: "ಪುಸ್ತಕಗಳು ಕನ್ನಡ ವಿಕಿಸೋರ್ಸ್‌ನಿಂದ. ಲೇಖಕರು ೧೯೬೫ರೊಳಗೆ ನಿಧನ. ಸಾರ್ವಜನಿಕ ಸ್ವತ್ತು.", en: "Books from Kannada Wikisource. Authors died in or before 1965. Public domain." },
@@ -252,6 +242,7 @@ export const strings = {
   aboutGithub: { kn: "ಮೂಲ GitHubನಲ್ಲಿ", en: "Source on GitHub" },
   ...collectionsStrings,
   ...practiceStrings,
+  ...letterSheetStrings,
   ...offlineStrings,
   ...padabandhaStrings,
   ...shareStrings,

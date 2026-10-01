@@ -16,7 +16,7 @@ import {
 
 export { canvasToPngBlob, downloadPng };
 
-export type ShareKind = "word" | "gade" | "dailyWord" | "verse";
+export type ShareKind = "word" | "gade" | "dailyWord" | "verse" | "letter";
 export type ShareSize = "portrait" | "square";
 
 export const SHARE_SIZES: Record<ShareSize, { w: number; h: number }> = {
@@ -30,11 +30,12 @@ export const KIND_LABEL: Record<ShareKind, string> = {
   gade: "ಗಾದೆ",
   dailyWord: "ಇಂದಿನ ಪದ",
   verse: "ಗ್ರಂಥ",
+  letter: "ಅಕ್ಷರ",
 };
 
 const BRAND = "ಸಿರಿಗನ್ನಡ";
 
-const COLORS = {
+export const COLORS = {
   paper: "#fbf6ea",
   accent: "#b3122b",
   accentSoft: "#f8e3e6",
@@ -93,7 +94,7 @@ export function buildCaption(input: ShareCardInput): string {
 }
 
 /** Paints `first` then `second` immediately after it in a different colour — the wordmark/footer split. */
-function fillSplitText(ctx: CanvasRenderingContext2D, first: string, second: string, x: number, y: number, firstColor: string, secondColor: string): void {
+export function fillSplitText(ctx: CanvasRenderingContext2D, first: string, second: string, x: number, y: number, firstColor: string, secondColor: string): void {
   ctx.fillStyle = firstColor;
   ctx.fillText(first, x, y);
   ctx.fillStyle = secondColor;
@@ -220,7 +221,7 @@ export function paintShareCard(ctx: CanvasRenderingContext2D, input: ShareCardIn
 }
 
 /** Resolves the next/font `--font-*` variable behind a CSS-variable name to a real family string. */
-function cssFontFamily(variable: string, fallback: string): string {
+export function cssFontFamily(variable: string, fallback: string): string {
   if (typeof window === "undefined") return fallback;
   const value = getComputedStyle(document.documentElement).getPropertyValue(variable).trim();
   return value || fallback;
